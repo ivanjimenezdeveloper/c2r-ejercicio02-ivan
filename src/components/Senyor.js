@@ -4,11 +4,12 @@ import { IconoCheck } from "./IconoCheck";
 import { useState } from "react";
 
 export const Senyor = (props) => {
-  const { senyor } = props;
-  const { foto, nombre, profesion, estado, twitter, marcado } = senyor;
+  const { senyor, cambiarMarcado } = props;
+  const { id, foto, nombre, profesion, estado, twitter, marcado } = senyor;
   const [activo, setActivo] = useState(marcado ? " marcado" : "");
   const toggleMarcado = () => {
-    setActivo(activo === "" ? " marcado" : "");
+    cambiarMarcado(id);
+    return setActivo(activo === "" ? " marcado" : "");
   };
 
   return (

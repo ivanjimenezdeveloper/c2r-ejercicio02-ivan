@@ -22,10 +22,21 @@ function App() {
     }, 2000);
 
   if (!primeraCarga) {
-    debugger;
     getSenyores(setSenyores);
   }
-  debugger;
+
+  const cambiarMarcado = (id) => {
+    setSenyores(
+      senyores.map((senyor) => {
+        if (senyor.id === id) {
+          return { ...senyor, marcado: !senyor.marcado };
+        } else {
+          return senyor;
+        }
+      })
+    );
+  };
+
   return (
     <div className="contenedor-general container-xl">
       <header className="cabecera text-center py-2 row">
@@ -34,7 +45,11 @@ function App() {
       <main className="principal mt-2 row">
         {senyores.length !== 0
           ? senyores.map((senyor) => (
-              <Senyor senyor={senyor} key={senyor.nombre} />
+              <Senyor
+                senyor={senyor}
+                cambiarMarcado={cambiarMarcado}
+                key={senyor.nombre}
+              />
             ))
           : ""}
       </main>
