@@ -3,10 +3,11 @@ export const Cabecera = (props) => {
     return senyores.filter((senyor) => senyor.marcado === true).length;
   };
   let cantidadApuntando = 0;
-
+  let funcionMarcado;
   if (props.senyores.length !== 0) {
     const senyores = props.senyores;
     cantidadApuntando = contarApuntadores(senyores);
+    funcionMarcado = props.toggleMarcadoTodos;
   }
 
   return (
@@ -15,7 +16,9 @@ export const Cabecera = (props) => {
       <span className="col-12 mt-2">
         {cantidadApuntando} señores que te apuntan con el dedo marcados
       </span>
-      <button className="col-2 offset-5 btn mt-2">Marcar todos</button>
+      <button className="col-2 offset-5 btn mt-2" onClick={funcionMarcado}>
+        Marcar todos
+      </button>
     </>
   );
 };

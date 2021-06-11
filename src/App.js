@@ -3,20 +3,33 @@ import { Cabecera } from "./components/Cabecera";
 import { Senyor } from "./components/Senyor";
 import { senyores as senyoresApi } from "./datos/senyores";
 
+let primeraCarga = false;
 function App() {
   let [senyores, setSenyores] = useState([]);
 
-  const getSenyores = () =>
+  const toggleMarcadoTodos = () => {
+    setSenyores(
+      senyores.map((senyor) => {
+        return { ...senyor, marcado: true };
+      })
+    );
+  };
+
+  const getSenyores = (funcion) =>
     setTimeout(() => {
-      setSenyores(senyoresApi);
+      primeraCarga = true;
+      funcion(senyoresApi);
     }, 2000);
 
-  getSenyores();
-
+  if (!primeraCarga) {
+    debugger;
+    getSenyores(setSenyores);
+  }
+  debugger;
   return (
     <div className="contenedor-general container-xl">
       <header className="cabecera text-center py-2 row">
-        <Cabecera senyores={senyores} />
+        <Cabecera senyores={senyores} toggleMarcadoTodos={toggleMarcadoTodos} />
       </header>
       <main className="principal mt-2 row">
         {senyores.length !== 0

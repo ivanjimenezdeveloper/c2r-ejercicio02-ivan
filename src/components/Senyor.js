@@ -7,7 +7,6 @@ export const Senyor = (props) => {
   const { senyor } = props;
   const { foto, nombre, profesion, estado, twitter, marcado } = senyor;
   const [activo, setActivo] = useState(marcado ? " marcado" : "");
-
   const toggleMarcado = () => {
     setActivo(activo === "" ? " marcado" : "");
   };
