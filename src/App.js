@@ -21,10 +21,6 @@ function App() {
       funcion(senyoresApi);
     }, 2000);
 
-  if (!primeraCarga) {
-    getSenyores(setSenyores);
-  }
-
   const cambiarMarcado = (id) => {
     setSenyores(
       senyores.map((senyor) => {
@@ -36,6 +32,10 @@ function App() {
       })
     );
   };
+
+  if (!primeraCarga) {
+    getSenyores(setSenyores);
+  }
 
   return (
     <div className="contenedor-general container-xl">

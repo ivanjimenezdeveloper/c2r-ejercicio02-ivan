@@ -6,7 +6,9 @@ import { useState } from "react";
 export const Senyor = (props) => {
   const { senyor, cambiarMarcado } = props;
   const { id, foto, nombre, profesion, estado, twitter, marcado } = senyor;
+  debugger;
   const [activo, setActivo] = useState(marcado ? " marcado" : "");
+  console.log(marcado, activo, nombre);
   const toggleMarcado = () => {
     cambiarMarcado(id);
     return setActivo(activo === "" ? " marcado" : "");
