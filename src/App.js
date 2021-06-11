@@ -9,8 +9,6 @@ function App() {
   const getSenyores = () =>
     setTimeout(() => {
       setSenyores(senyoresApi);
-
-      console.log(senyoresApi);
     }, 2000);
 
   getSenyores();
@@ -22,7 +20,9 @@ function App() {
       </header>
       <main className="principal mt-2 row">
         {senyores.length !== 0
-          ? senyores.map((senyor) => <Senyor senyor={senyor} />)
+          ? senyores.map((senyor) => (
+              <Senyor senyor={senyor} key={senyor.nombre} />
+            ))
           : ""}
       </main>
     </div>

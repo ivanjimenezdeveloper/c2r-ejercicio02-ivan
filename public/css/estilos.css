@@ -14,10 +14,16 @@ body {
 .senyor:hover .icono {
   display: block;
 }
+.senyor.marcado .icono {
+  display: block;
+}
 .senyor .avatar img {
   transition: transform 0.3s;
 }
 .senyor:hover .avatar img {
+  transform: scaleX(-1);
+}
+.senyor.marcado .avatar img {
   transform: scaleX(-1);
 }
 .avatar {
