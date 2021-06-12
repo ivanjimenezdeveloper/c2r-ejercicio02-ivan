@@ -1,14 +1,17 @@
 import { ImagenSenyor } from "./ImagenSenyor";
 import { InformacionSenyor } from "./InformacionSenyor";
 import { IconoCheck } from "./IconoCheck";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Senyor = (props) => {
   const { senyor, cambiarMarcado } = props;
   const { id, foto, nombre, profesion, estado, twitter, marcado } = senyor;
-  debugger;
   const [activo, setActivo] = useState(marcado ? " marcado" : "");
-  console.log(marcado, activo, nombre);
+
+  useEffect(() => {
+    setActivo(marcado ? " marcado" : "");
+  }, [marcado]);
+
   const toggleMarcado = () => {
     cambiarMarcado(id);
     return setActivo(activo === "" ? " marcado" : "");
